@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Widget.Domain.Abstract {
-    public interface ITaxRateRepository {
-        decimal CalculateTaxAmount(decimal subTotal, string stateAbbreviation);
+    public interface IStateRepository {
+        decimal CalculateTaxAmount(decimal subTotal, int stateId);
     }
 }

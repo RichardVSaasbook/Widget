@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ITaxRateRepository.cs" />
+    <Compile Include="Abstract\IStateRepository.cs" />
     <Compile Include="Models\WidgetModel.cs">
       <DependentUpon>WidgetModel.tt</DependentUpon>
       <AutoGen>True</AutoGen>
