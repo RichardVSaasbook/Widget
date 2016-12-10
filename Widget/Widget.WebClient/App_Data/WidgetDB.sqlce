@@ -9,14 +9,15 @@ GO
 ALTER TABLE [Widget] ADD CONSTRAINT [PK_Widget] PRIMARY KEY ([Id]);
 GO
 
-CREATE TABLE [TaxRate] (
-  [Id]                INT            NOT NULL IDENTITY (1, 1),
-  [StateAbbreviation] NCHAR(2)       NOT NULL,
-  [Amount]            NUMERIC(3, 2)  NOT NULL
+CREATE TABLE [State] (
+  [Id]           INT           NOT NULL IDENTITY (1, 1),
+  [Name]         NVARCHAR(64)  NOT NULL,
+  [Abbreviation] NCHAR(2)      NOT NULL,
+  [TaxRate]      NUMERIC(3, 2) NOT NULL
 );
 GO
 
-ALTER TABLE [TaxRate] ADD CONSTRAINT [PK_TaxRate] PRIMARY KEY ([Id]);
+ALTER TABLE [State] ADD CONSTRAINT [PK_State] PRIMARY KEY([Id]);
 GO
 
 INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Golf Ball', 0.77, 0); GO
@@ -30,5 +31,53 @@ INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Scarf', 9.97
 INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Tennis Racket', 19.97, 1); GO
 INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Chess Set', 26.97, 0); GO
 
-INSERT INTO [TaxRate] ([StateAbbreviation], [Amount]) VALUES ('TX', 0.05); GO
-INSERT INTO [TaxRate] ([StateAbbreviation], [Amount]) VALUES ('FL', 0.05); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Alabama', 'AL', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Alaska', 'AK', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Arizona', 'AZ', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Arkansas', 'AR', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('California', 'CA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Colorado', 'CO', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Connecticut', 'CT', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Delaware', 'DE', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Florida', 'FL', 0.05); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Georgia', 'GA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Hawaii', 'HI', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Idaho', 'ID', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Illinois', 'IL', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Indiana', 'IN', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Iowa', 'IA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Kansas', 'KS', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Kentucky', 'KY', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Louisiana', 'LA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Maine', 'ME', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Montana', 'MT', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Nebraska', 'NE', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Nevada', 'NV', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('New Hampshire', 'NH', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('New Jersey', 'NJ', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('New Mexico', 'NM', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('New York', 'NY', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('North Carolina', 'NC', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('North Dakota', 'ND', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Ohio', 'OH', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Oklahoma', 'OK', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Oregon', 'OR', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Maryland', 'MD', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Massachusetts', 'MA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Michigan', 'MI', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Minnesota', 'MN', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Mississippi', 'MS', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Missouri', 'MO', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Pennsylvania', 'PA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Rhode Island', 'RI', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('South Carolina', 'SC', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('South Dakota', 'SD', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Tennessee', 'TN', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Texas', 'TX', 0.05); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Utah', 'UT', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Vermont', 'VT', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Virginia', 'VA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Washington', 'WA', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('West Virginia', 'WV', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Wisconsin', 'WI', 0.00); GO
+INSERT INTO [State] ([Name], [Abbreviation], [TaxRate]) VALUES ('Wyoming', 'WY', 0.00); GO
