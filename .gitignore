@@ -240,4 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/Widget/Widget.WebClient/_bin_deployableAssemblies/amd64
+
+# Reverse POCO
+_bin_deployableAssemblies/

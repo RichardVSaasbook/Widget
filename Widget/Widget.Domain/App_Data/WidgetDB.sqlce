@@ -1,0 +1,34 @@
+﻿CREATE TABLE [Widget] (
+  [Id]           INT           NOT NULL IDENTITY (1, 1),
+  [Name]         NVARCHAR(100) NOT NULL,
+  [BasePrice]    MONEY         NOT NULL,
+  [IsDiscounted] BIT           NOT NULL
+);
+GO
+
+ALTER TABLE [Widget] ADD CONSTRAINT [PK_Widget] PRIMARY KEY ([Id]);
+GO
+
+CREATE TABLE [TaxRate] (
+  [Id]                INT            NOT NULL IDENTITY (1, 1),
+  [StateAbbreviation] NCHAR(2)       NOT NULL,
+  [Amount]            NUMERIC(3, 2)  NOT NULL
+);
+GO
+
+ALTER TABLE [TaxRate] ADD CONSTRAINT [PK_TaxRate] PRIMARY KEY ([Id]);
+GO
+
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Golf Ball', 0.77, 0); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Basket Ball', 12.97, 1); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Cardboard Box', 8.47, 0); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Bird Cage', 99.97, 1); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Jacket', 24.47, 0); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Laptop Computer', 419.97, 1); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Water Bottle', 4.99, 0); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Scarf', 9.97, 0); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Tennis Racket', 19.97, 1); GO
+INSERT INTO [Widget] ([Name], [BasePrice], [IsDiscounted]) VALUES ('Chess Set', 26.97, 0); GO
+
+INSERT INTO [TaxRate] ([StateAbbreviation], [Amount]) VALUES ('TX', 0.05); GO
+INSERT INTO [TaxRate] ([StateAbbreviation], [Amount]) VALUES ('FL', 0.05); GO
