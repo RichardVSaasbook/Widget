@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Widget.Domain.Abstract;
+using Widget.Domain.Concrete;
 using Xunit;
 
 namespace Widget.Tests.DomainTests {
-    public class TaxRateRepositoryTests {
+    public class StateRepositoryTests {
         private IStateRepository repository;
 
-        public TaxRateRepositoryTests() {
-            // TODO: create TaxRateRepository
+        public StateRepositoryTests() {
+            repository = new EfStateRepository(new MockWidgetDbContext().MockContext.Object);
         }
 
         /// <summary>
@@ -38,8 +39,10 @@ namespace Widget.Tests.DomainTests {
             decimal subTotal = -13.97M;
             int stateId = 2;
 
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => repository.CalculateTaxAmount(subTotal, stateId));
-            Assert.Equal("Sub total of '-13.97' is not valid because it is negative.", ex.Message);
+            decimal expected = 0;
+            decimal actual = repository.CalculateTaxAmount(subTotal, stateId);
+            
+            Assert.Equal(expected, actual);
         }
 
         /// <summary>
@@ -51,8 +54,10 @@ namespace Widget.Tests.DomainTests {
             decimal subTotal = 45.67M;
             int stateId = 4;
 
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => repository.CalculateTaxAmount(subTotal, stateId));
-            Assert.Equal("State with ID of '4' does not exist.", ex.Message);
+            decimal expected = 0;
+            decimal actual = repository.CalculateTaxAmount(subTotal, stateId);
+
+            Assert.Equal(expected, actual);
         }
     }
 }

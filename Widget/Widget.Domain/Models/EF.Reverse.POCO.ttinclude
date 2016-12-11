@@ -215,7 +215,7 @@ foreach(var usingStatement in usingsContext.Distinct().OrderBy(x => x)) { #>
 foreach(Table tbl in from t in tables.Where(t => !t.IsMapping && t.HasPrimaryKey).OrderBy(x => x.NameHumanCase) select t)
 {
 #>
-        public System.Data.Entity.DbSet<<#=tbl.NameHumanCase#>> <#=Inflector.MakePlural(tbl.NameHumanCase)#> { get; set; }<#if(IncludeComments != CommentsStyle.None){#> // <#=tbl.Name#>
+        public virtual System.Data.Entity.DbSet<<#=tbl.NameHumanCase#>> <#=Inflector.MakePlural(tbl.NameHumanCase)#> { get; set; }<#if(IncludeComments != CommentsStyle.None){#> // <#=tbl.Name#>
 <# } else { #>
 
 <# } #>
@@ -510,7 +510,7 @@ foreach(var usingStatement in usingsContext.Distinct().OrderBy(x => x)) { #>
 foreach (Table tbl in from t in tables.Where(t => !t.IsMapping && t.HasPrimaryKey).OrderBy(x => x.NameHumanCase) select t)
 {
 #>
-        public System.Data.Entity.DbSet<<#=tbl.NameHumanCase #>> <#=Inflector.MakePlural(tbl.NameHumanCase) #> { get; set; }
+        public virtual System.Data.Entity.DbSet<<#=tbl.NameHumanCase #>> <#=Inflector.MakePlural(tbl.NameHumanCase) #> { get; set; }
 <# } #>
 
         public Fake<#=DbContextName #>()
