@@ -1,0 +1,18 @@
+﻿@model Widget.WebClient.Models.WidgetViewModel
+
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="input-group">
+                <label for="widget_@(Model.Widget.Id)_quantity" class="input-group-addon">Qty</label>
+                <input type="number" value="@Model.Quantity" min="0" id="widget_@(Model.Widget.Id)_quantity" name="widgetQuantity" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h5><strong>@Model.Widget.Name</strong></h5>
+        </div>
+        <div class="col-md-7">
+            @Html.WidgetPrice(Model.Widget)
+        </div>
+    </div>
+</li>

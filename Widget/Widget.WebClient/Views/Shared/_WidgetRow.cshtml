@@ -1,0 +1,15 @@
+﻿@model Widget.WebClient.Models.WidgetViewModel
+
+@if (Model.Quantity > 0) {
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-3">
+                <h5><strong>@Model.Widget.Name</strong></h5>
+            </div>
+            <div class="col-md-2">@Model.Quantity</div>
+            <div class="col-md-7">
+                @Html.WidgetPrice(Model.Widget)
+            </div>
+        </div>
+    </li>
+}
