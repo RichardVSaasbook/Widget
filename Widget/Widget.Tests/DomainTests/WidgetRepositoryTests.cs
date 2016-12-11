@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Widget.Domain.Abstract;
+using Widget.Domain.Concrete;
 using Xunit;
 
 namespace Widget.Tests.DomainTests {
@@ -11,7 +12,7 @@ namespace Widget.Tests.DomainTests {
         private IWidgetRepository repository;
 
         public WidgetRepositoryTests() {
-            //repository = new EfWidgetRepository(new MockWidgetDbContext().MockContext.Object);
+            repository = new EfWidgetRepository(new MockWidgetDbContext().MockContext.Object);
         }
 
         /// <summary>
