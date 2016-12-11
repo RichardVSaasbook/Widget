@@ -1,6 +1,67 @@
-﻿@model Widget.Domain.Models.State
+﻿@model Widget.WebClient.Models.WidgetIndexViewModel
 
 @{
     ViewBag.Title = "Widget Index";
 }
 
+<div class="panel panel-default">
+    <div class="panel-heading">Widgets</div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-2">
+                    <h3>Name</h3>
+                </div>
+                <div class="col-md-7">
+                    <h3>Price</h3>
+                </div>
+            </div>
+        </li>
+
+        @foreach (var widget in Model.Widgets) {
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <label for="widget_@(widget.Id)_quantity" class="input-group-addon">Qty</label>
+                            <input type="number" value="0" min="0" id="widget_@(widget.Id)_quantity" name="widget_quantity" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><strong>@widget.Name</strong></h5>
+                    </div>
+                    <div class="col-md-7">
+                        @if (widget.IsDiscounted) {
+                            <h5>
+                                <s>$@widget.BasePrice</s>&emsp;<strong>$@(Math.Round(widget.BasePrice * 0.9M, 2))</strong>
+                                <span class="label label-primary pull-right">Discounted</span>
+                            </h5>
+                        }
+                        else {
+                            <h5>$@widget.BasePrice</h5>
+                        }
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <label for="state" class="input-group-addon">State</label>
+                    @Html.DropDownList("state", Model.States, new {
+                        @class = "form-control",
+                        id = "state"
+                    })
+                </div>
+            </div>
+            <div class="col-md-8">
+                <button class="btn btn-primary pull-right">Calculate</button>
+            </div>
+        </div>
+    </div>
+</div>

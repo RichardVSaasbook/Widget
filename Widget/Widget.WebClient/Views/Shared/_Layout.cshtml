@@ -10,13 +10,19 @@
     </head>
 
     <body>
-        <header>
+        <header class="container-fluid">
             <div class="well">
-                <h1>Widget</h1>
-                <p>Select the quantities for each Widget, select a State, then click the Calculate button.</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Widget</h1>
+                        <p>Select the quantities for each Widget, select a State, then click the Calculate button.</p>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <main>@RenderBody()</main>
+        <main class="container">
+            @RenderBody()
+        </main>
     </body>
 </html>

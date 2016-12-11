@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Widget.Domain.Abstract;
+using Widget.Domain.Models;
+using Widget.WebClient.Models;
 
 namespace Widget.WebClient.Controllers {
     /// <summary>
@@ -20,7 +22,19 @@ namespace Widget.WebClient.Controllers {
 
         // GET /
         public ActionResult Index() {
-            return View();
+            List<SelectListItem> states = new List<SelectListItem>();
+
+            foreach (State state in stateRepository.ListStates()) {
+                states.Add(new SelectListItem {
+                    Text = state.Name,
+                    Value = state.Id.ToString()
+                });
+            }
+
+            return View(new WidgetIndexViewModel {
+                States = states,
+                Widgets = widgetRepository.ListWidgets()
+            });
         }
 
         // POST /calculate
