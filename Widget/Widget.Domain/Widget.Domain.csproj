@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IStateRepository.cs" />
+    <Compile Include="Abstract\IWidgetRepository.cs" />
     <Compile Include="Concrete\EfStateRepository.cs" />
     <Compile Include="Models\WidgetModel.cs">
       <DependentUpon>WidgetModel.tt</DependentUpon>

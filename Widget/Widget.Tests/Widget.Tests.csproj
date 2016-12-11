@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainTests\StateRepositoryTests.cs" />
+    <Compile Include="DomainTests\WidgetRepositoryTests.cs" />
     <Compile Include="MockWidgetDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
