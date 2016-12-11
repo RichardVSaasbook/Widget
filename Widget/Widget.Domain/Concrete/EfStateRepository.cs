@@ -47,5 +47,13 @@ namespace Widget.Domain.Concrete {
 
             return subTotal * Math.Round(state.TaxRate, 2);
         }
+
+        /// <summary>
+        /// List all of the States.
+        /// </summary>
+        /// <returns>The List of States.</returns>
+        public List<State> ListStates() {
+            return db.States.ToList();
+        }
     }
 }
