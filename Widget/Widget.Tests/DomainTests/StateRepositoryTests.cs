@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Widget.Domain.Abstract;
 using Widget.Domain.Concrete;
+using Widget.Domain.Models;
 using Xunit;
 
 namespace Widget.Tests.DomainTests {
@@ -13,6 +14,19 @@ namespace Widget.Tests.DomainTests {
 
         public StateRepositoryTests() {
             repository = new EfStateRepository(new MockWidgetDbContext().MockContext.Object);
+        }
+
+        /// <summary>
+        /// Test that the ListStates method returns a List of all the States.
+        /// </summary>
+        [Fact]
+        public void Test_ListStates() {
+            List<State> states = repository.ListStates();
+
+            Assert.Equal(3, states.Count);
+            Assert.Equal("State 1", states[0].Name);
+            Assert.Equal("State 2", states[1].Name);
+            Assert.Equal("State 3", states[2].Name); 
         }
 
         /// <summary>
@@ -38,11 +52,10 @@ namespace Widget.Tests.DomainTests {
         public void Test_CalculateTaxAmount_NegativeSubTotal() {
             decimal subTotal = -13.97M;
             int stateId = 2;
-
-            decimal expected = 0;
+            
             decimal actual = repository.CalculateTaxAmount(subTotal, stateId);
             
-            Assert.Equal(expected, actual);
+            Assert.Equal(0, actual);
         }
 
         /// <summary>
@@ -53,11 +66,10 @@ namespace Widget.Tests.DomainTests {
         public void Test_CalculateTaxAmount_StateNotFound() {
             decimal subTotal = 45.67M;
             int stateId = 4;
-
-            decimal expected = 0;
+            
             decimal actual = repository.CalculateTaxAmount(subTotal, stateId);
 
-            Assert.Equal(expected, actual);
+            Assert.Equal(0, actual);
         }
     }
 }
