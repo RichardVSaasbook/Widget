@@ -19,19 +19,7 @@
                     </li>
 
                     foreach (var widget in Model.IndexModel.Widgets) {
-                        if (widget.Quantity > 0) {
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h5><strong>@widget.Widget.Name</strong></h5>
-                                    </div>
-                                    <div class="col-md-2">@widget.Quantity</div>
-                                    <div class="col-md-7">
-                                        @Html.WidgetPrice(widget.Widget)
-                                    </div>
-                                </div>
-                            </li>
-                        }
+                        @Html.Partial("~/Views/Shared/_WidgetRow.cshtml", widget)
                     }
                 }
                 else {

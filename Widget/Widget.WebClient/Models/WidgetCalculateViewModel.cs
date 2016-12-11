@@ -18,8 +18,8 @@ namespace Widget.WebClient.Models {
                 if (widget.Quantity > 0) {
                     numberOfWidgetsSelected++;
 
-                    subTotal += widget.Widget.BasePrice;
-                    discountTotal += widget.Widget.BasePrice - widget.Widget.GetDiscountedPrice();
+                    subTotal += widget.Widget.BasePrice * widget.Quantity;
+                    discountTotal += (widget.Widget.BasePrice - widget.Widget.GetDiscountedPrice()) * widget.Quantity;
                 }
             }
 

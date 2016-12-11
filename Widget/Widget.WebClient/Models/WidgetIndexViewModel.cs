@@ -37,7 +37,10 @@ namespace Widget.WebClient.Models {
                 States = states,
                 StateItems = stateSelectItems,
                 Widgets = widgetViewModels,
-                FormModel = new WidgetFormModel()
+                FormModel = new WidgetFormModel {
+                    SelectedState = selectedState,
+                    WidgetQuantities = widgetQuantities
+                }
             };
         }
 

@@ -167,6 +167,7 @@
     <Content Include="Views\Widget\Index.cshtml" />
     <Content Include="Views\Shared\_WidgetForm.cshtml" />
     <Content Include="Views\Widget\Calculate.cshtml" />
+    <Content Include="Views\Shared\_WidgetRow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -119,6 +119,7 @@
     <Compile Include="MockWidgetDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebClientTests\MessageModelTests.cs" />
+    <Compile Include="WebClientTests\ModelTests.cs" />
     <Compile Include="WebClientTests\WidgetHelpersTests.cs" />
   </ItemGroup>
   <ItemGroup>
