@@ -17,7 +17,9 @@ namespace Widget.Domain.Util {
         /// <param name="widget">The Widget to extend.</param>
         /// <returns>The discounted price.</returns>
         public static decimal GetDiscountedPrice(this Models.Widget widget) {
-            return widget.BasePrice * (1.0M - DISCOUNT_AMOUNT);
+            decimal discountAmount = widget.IsDiscounted ? 1.0M - DISCOUNT_AMOUNT : 1.0M;
+
+            return widget.BasePrice * discountAmount;
         }
     }
 }

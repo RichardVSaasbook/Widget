@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainTests\PriceUtilityTests.cs" />
     <Compile Include="DomainTests\StateRepositoryTests.cs" />
     <Compile Include="DomainTests\WidgetRepositoryTests.cs" />
     <Compile Include="MockWidgetDbContext.cs" />
