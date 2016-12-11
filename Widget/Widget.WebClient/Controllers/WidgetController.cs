@@ -22,24 +22,54 @@ namespace Widget.WebClient.Controllers {
 
         // GET /
         public ActionResult Index() {
-            List<SelectListItem> states = new List<SelectListItem>();
-
-            foreach (State state in stateRepository.ListStates()) {
-                states.Add(new SelectListItem {
-                    Text = state.Name,
-                    Value = state.Id.ToString()
-                });
-            }
-
-            return View(new WidgetIndexViewModel {
-                States = states,
-                Widgets = widgetRepository.ListWidgets()
-            });
+            return View(WidgetIndexViewModel.Create(stateRepository, widgetRepository));
         }
 
         // POST /calculate
-        public ActionResult Calculate() {
-            return View();
+        public ActionResult Calculate(WidgetFormModel formModel) {
+            WidgetIndexViewModel indexModel = WidgetIndexViewModel.Create(stateRepository, widgetRepository);
+            int widgetCount = indexModel.Widgets.Count();
+
+            if (formModel.WidgetQuantities.Count != widgetCount) {
+                AddErrorMessage("Quantity amounts were not provided for all Widgets.");
+            }
+            else {
+                for (int q = 0; q < formModel.WidgetQuantities.Count; q++) {
+                    int quantity = formModel.WidgetQuantities[q];
+
+                    if (quantity < 0) {
+                        AddErrorMessage($"Quantity for Widget '{indexModel.Widgets[q].Name}' cannot be negative.");
+                    }
+                }
+
+                indexModel.FormModel.WidgetQuantities = formModel.WidgetQuantities;
+            }
+
+            if (formModel.SelectedState < 1 || formModel.SelectedState > 50) {
+                AddErrorMessage("Selected state is invalid.");
+            }
+            else {
+                indexModel.FormModel.SelectedState = formModel.SelectedState;
+            }
+
+            if (TempData["Message"] == null) {
+                return View("Index", indexModel);
+            }
+            else {
+                TempData["Message"] = new SuccessMessageModel {
+                    Message = "Calculation successful."
+                };
+
+                return View();
+            }
+        }
+
+        private void AddErrorMessage(string message) {
+            if (TempData["Message"] == null) {
+                TempData["Message"] = new ErrorMessageModel();
+            }
+
+            (TempData["Message"] as ErrorMessageModel).AddError(message);
         }
     }
 }

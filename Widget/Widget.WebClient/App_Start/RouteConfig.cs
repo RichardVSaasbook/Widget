@@ -20,7 +20,7 @@ namespace Widget.WebClient
             );
 
             routes.MapRoute(
-                "",
+                "WidgetCalculate",
                 "calculate",
                 new { Controller = "Widget", Action = "Calculate" }
             );

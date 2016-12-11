@@ -144,6 +144,10 @@
     </Compile>
     <Compile Include="Helpers\WidgetHelper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\ErrorMessageModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\SuccessMessageModel.cs" />
+    <Compile Include="Models\WidgetFormModel.cs" />
     <Compile Include="Models\WidgetIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,6 +164,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Widget\Index.cshtml" />
     <Content Include="Views\Shared\_WidgetForm.cshtml" />
+    <Content Include="Views\Widget\Calculate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
