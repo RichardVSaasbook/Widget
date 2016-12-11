@@ -26,33 +26,35 @@ namespace Widget.WebClient.Controllers {
         }
 
         // POST /calculate
-        public ActionResult Calculate(WidgetFormModel formModel) {
-            WidgetIndexViewModel indexModel = WidgetIndexViewModel.Create(stateRepository, widgetRepository);
+        public ActionResult Calculate(int state, List<int> widgetQuantity) {
+            WidgetIndexViewModel indexModel = WidgetIndexViewModel.Create(stateRepository, widgetRepository, state, widgetQuantity);
             int widgetCount = indexModel.Widgets.Count();
 
-            if (formModel.WidgetQuantities.Count != widgetCount) {
+            if (widgetQuantity.Count != widgetCount) {
                 AddErrorMessage("Quantity amounts were not provided for all Widgets.");
             }
             else {
-                for (int q = 0; q < formModel.WidgetQuantities.Count; q++) {
-                    int quantity = formModel.WidgetQuantities[q];
+                for (int q = 0; q < widgetQuantity.Count; q++) {
+                    int quantity = widgetQuantity[q];
 
                     if (quantity < 0) {
-                        AddErrorMessage($"Quantity for Widget '{indexModel.Widgets[q].Name}' cannot be negative.");
+                        AddErrorMessage($"Quantity for Widget '{indexModel.Widgets[q].Widget.Name}' cannot be negative.");
                     }
                 }
 
-                indexModel.FormModel.WidgetQuantities = formModel.WidgetQuantities;
+                indexModel.FormModel.WidgetQuantities = widgetQuantity;
             }
 
-            if (formModel.SelectedState < 1 || formModel.SelectedState > 50) {
+            if (state < 1 || state > 50) {
                 AddErrorMessage("Selected state is invalid.");
             }
             else {
-                indexModel.FormModel.SelectedState = formModel.SelectedState;
+                indexModel.FormModel.SelectedState = state;
             }
 
-            if (TempData["Message"] == null) {
+            MessageModel message = TempData["Message"] as MessageModel;
+
+            if (message != null && message.Type == "danger") {
                 return View("Index", indexModel);
             }
             else {
@@ -60,7 +62,7 @@ namespace Widget.WebClient.Controllers {
                     Message = "Calculation successful."
                 };
 
-                return View();
+                return View(WidgetCalculateViewModel.Create(indexModel));
             }
         }
 

@@ -1,5 +1,110 @@
-﻿
+﻿@model Widget.WebClient.Models.WidgetCalculateViewModel
+
 @{
     ViewBag.Title = "Widget Calculate";
 }
 
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">Selected Widgets</div>
+            <ul class="list-group">
+                @if (Model.NumberOfWidgetsSelected > 0) {
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3"><h2>Name</h2></div>
+                            <div class="col-md-2"><h2>Qty</h2></div>
+                            <div class="col-md-7"><h2>Price</h2></div>
+                        </div>
+                    </li>
+
+                    foreach (var widget in Model.IndexModel.Widgets) {
+                        if (widget.Quantity > 0) {
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5><strong>@widget.Widget.Name</strong></h5>
+                                    </div>
+                                    <div class="col-md-2">@widget.Quantity</div>
+                                    <div class="col-md-7">
+                                        @Html.WidgetPrice(widget.Widget)
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+                else {
+                    <li class="list-group-item"><em>No widgets were selected.</em></li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Calculation</div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Sub Total</strong>
+                        </div>
+                        <div class="col-md-6">
+                            @Model.SubTotal
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Discount Amount</strong>
+                        </div>
+                        <div class="col-md-6">
+                            @Model.DiscountAmount
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Tax Amount</strong>
+                        </div>
+                        <div class="col-md-6">
+                            @Model.TaxAmount
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Total Amount</strong>
+                        </div>
+                        <div class="col-md-6">
+                            @Model.TotalAmount
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>State</strong>
+                        </div>
+                        <div class="col-md-6">
+                            @Model.SelectedState.Name (@Model.SelectedState.Abbreviation)
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.RouteLink("Back to Index", "WidgetIndex", new { }, new {
+                                @class = "btn btn-primary pull-right"
+                            })
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

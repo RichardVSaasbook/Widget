@@ -147,8 +147,10 @@
     <Compile Include="Models\ErrorMessageModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\SuccessMessageModel.cs" />
+    <Compile Include="Models\WidgetCalculateViewModel.cs" />
     <Compile Include="Models\WidgetFormModel.cs" />
     <Compile Include="Models\WidgetIndexViewModel.cs" />
+    <Compile Include="Models\WidgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

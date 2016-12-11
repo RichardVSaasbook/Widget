@@ -15,13 +15,20 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>Widget</h1>
-                        <p>Select the quantities for each Widget, select a State, then click the Calculate button.</p>
                     </div>
                 </div>
             </div>
         </header>
 
         <main class="container">
+            @if (TempData["Message"] != null) {
+                <div class="row">
+                    <div class="col-md-12">
+                        @MvcHtmlString.Create(TempData["Message"].ToString())
+                    </div>
+                </div>
+            }
+
             @RenderBody()
         </main>
     </body>

@@ -14,7 +14,7 @@ namespace Widget.WebClient
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "", 
+                "WidgetIndex", 
                 "", 
                 new { Controller = "Widget", Action = "Index" }
             );
