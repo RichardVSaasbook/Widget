@@ -142,12 +142,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\WidgetHelper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\WidgetIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -156,6 +159,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Widget\Index.cshtml" />
+    <Content Include="Views\Shared\_WidgetForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

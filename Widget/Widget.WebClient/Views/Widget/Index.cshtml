@@ -19,30 +19,7 @@
         </li>
 
         @foreach (var widget in Model.Widgets) {
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="input-group">
-                            <label for="widget_@(widget.Id)_quantity" class="input-group-addon">Qty</label>
-                            <input type="number" value="0" min="0" id="widget_@(widget.Id)_quantity" name="widget_quantity" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <h5><strong>@widget.Name</strong></h5>
-                    </div>
-                    <div class="col-md-7">
-                        @if (widget.IsDiscounted) {
-                            <h5>
-                                <s>$@widget.BasePrice</s>&emsp;<strong>$@(Math.Round(widget.BasePrice * 0.9M, 2))</strong>
-                                <span class="label label-primary pull-right">Discounted</span>
-                            </h5>
-                        }
-                        else {
-                            <h5>$@widget.BasePrice</h5>
-                        }
-                    </div>
-                </div>
-            </li>
+            @Html.Partial("~/Views/Shared/_WidgetForm.cshtml", widget)
         }
     </ul>
 </div>
