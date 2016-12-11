@@ -14,9 +14,15 @@ namespace Widget.WebClient
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                "", 
+                "", 
+                new { Controller = "Widget", Action = "Index" }
+            );
+
+            routes.MapRoute(
+                "",
+                "calculate",
+                new { Controller = "Widget", Action = "Calculate" }
             );
         }
     }
